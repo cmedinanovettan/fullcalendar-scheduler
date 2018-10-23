@@ -2061,6 +2061,9 @@ ResourceViewMixin = {
   },
   executeResourcesRender: function(resources) {
     this.renderResources(resources);
+
+    this.correctResources(resources);
+
     this.isResourcesRendered = true;
     return this.trigger('resourcesRendered');
   },
@@ -4418,6 +4421,9 @@ ResourceTimelineView = (function(superClass) {
     }
     this.rowHierarchy.show();
     this.unbatchRows();
+
+    console.log(resources);
+
     return this.reinitializeCellFollowers();
   };
 
@@ -4432,7 +4438,7 @@ ResourceTimelineView = (function(superClass) {
   /*
   	TODO: the scenario where there were previously unassociated events that are now
   	 attached to this resource. should render those events immediately.
-  
+
   	Responsible for rendering the new resource
    */
 
